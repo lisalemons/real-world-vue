@@ -8,21 +8,23 @@ import EventShow from './views/EventShow.vue'
 Vue.use(Router)
 
 export default new Router({
+  mode: 'history',
   routes: [
     {
       path: '/',
       name: 'event-list',
       component: EventList
     },
-    {
-      path: '/event-show',
-      name: 'event-show',
-      component: EventShow
-    },
-    {
-      path: '/event-create',
+    {  // Notice this has to come before /event/:id
+      path: '/event/create',
       name: 'event-create',
       component: EventCreate
+    },
+    {
+      path: '/event/:id',
+      name: 'event-show',
+      component: EventShow,
+      props: true
     }
   ]
 })
